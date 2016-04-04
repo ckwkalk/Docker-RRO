@@ -40,11 +40,10 @@ RUN apt-get update -qq \
     libapparmor1 \
     supervisor
 
-## Install Revolution R Open 8.0 Beta
+## Install Microsoft R Open 3.2.3
 RUN cd /tmp \
-    && wget http://mran.revolutionanalytics.com/install/RRO-8.0-Beta-Ubuntu-14.04.x86_64.tar.gz \
-    && tar -xzf RRO-8.0-Beta-Ubuntu-14.04.x86_64.tar.gz \
-    && ./install.sh
+   && wget http://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-Ubuntu-14.4.x86_64.deb \
+   &&  gdebi -qn MRO-3.2.3-Ubuntu-14.4.x86_64.deb \
 
 ## This is just to set a sane container wide default and is not required
 RUN mkdir /etc/R \
@@ -59,7 +58,7 @@ RUN mkdir /etc/R \
 
 ## Install RStudio server
 RUN cd /tmp \
-    && wget http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb -O studio-server.deb \
+    && wget http://download2.rstudio.org/rstudio-server-0.99.893-amd64.deb -O studio-server.deb \
     && gdebi -qn studio-server.deb
 
 ## Set a default user. Available via runtime flag `--user docker` 
