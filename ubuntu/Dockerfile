@@ -28,6 +28,7 @@ RUN apt-get update -qq \
 RUN apt-get update -qq \
 &&  apt-get install -y --no-install-recommends \
     ca-certificates \
+    openssh-client \
     ed \
     locales \
     vim-tiny \
